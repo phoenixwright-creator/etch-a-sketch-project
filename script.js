@@ -1,3 +1,6 @@
+const title = document.getElementById('title');
+const description = document.getElementById('description');
+
 const squareDiv = document.createElement('div');
 const container = document.getElementById('container');
 const btnDiv = document.createElement('div');
@@ -8,6 +11,12 @@ let windowWidth = window.innerWidth;
 document.body.style.margin = "0px";
 document.body.style.marginTop = "0px";
 document.body.style.padding = "0px";
+
+title.style.textAlign = "center";
+description.style.textAlign = "center";
+description.style.paddingLeft = "10px";
+description.style.paddingRight = "10px";
+description.style.paddingTop = "20px";
 
 container.style.height = windowHeight;
 container.style.width = windowWidth;
