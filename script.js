@@ -1,55 +1,59 @@
+// declaration of variables to work on the html structure
 const title = document.getElementById('title');
 const description = document.getElementById('description');
-
 const squareDiv = document.createElement('div');
 const container = document.getElementById('container');
 const btnDiv = document.createElement('div');
 const button = document.createElement('button');
-let windowHeight = window.innerHeight - 50;
-let windowWidth = window.innerWidth;
 
+// reset the margins of the html file to 0
 document.body.style.margin = "0px";
 document.body.style.marginTop = "0px";
 document.body.style.padding = "0px";
 
+// style and center the title + description content
 title.style.textAlign = "center";
 description.style.textAlign = "center";
-description.style.paddingLeft = "10px";
-description.style.paddingRight = "10px";
-description.style.paddingTop = "20px";
+description.style.padding = "30px";
+description.style.borderBottom = "1px solid black";
 
-container.style.height = windowHeight;
-container.style.width = windowWidth;
+// style and center the container of the draw panel
+container.style.height = "500px";
+container.style.width = "500px";
 container.style.display = "grid";
-container.style.gridGap = "1px";
-container.style.justifyContent = "center";
-container.style.paddingTop = "30px";
-container.style.paddingBottom = "30px";
+container.style.marginLeft = "auto";
+container.style.marginRight = "auto";
+container.style.marginTop = "30px";
+container.style.marginBottom = "30px";
+container.style.border = "15px double black";
 
+// add a button to change the pixels of the panel
 document.body.insertBefore(btnDiv, container);
 btnDiv.appendChild(button);
 button.textContent = "Click to draw a new panel";
 button.id = "drawButton";
 
+// style and center the button
 btnDiv.style.height = "100px";
 btnDiv.style.display = "flex";
 btnDiv.style.justifyContent = "center";
 btnDiv.style.alignItems = "center";
-btnDiv.style.borderBottom = "2px solid black";
-
 button.style.height = "50px";
 button.style.width = "200px";
 
+// function to create the draw panel
 function constructPanel(sizeGrid) {
+
+    let sizeBox = 500/sizeGrid;
 
     for(let j=1; j<=sizeGrid; j++){
     
         for(let i=1; i<=sizeGrid; i++){
             const squareDiv = document.createElement('div');
             squareDiv.className = "box16";
-            squareDiv.style.backgroundColor = "green";
-            squareDiv.style.height = "16px";
-            squareDiv.style.width = "16px";
+            squareDiv.style.backgroundColor = "black";
+            squareDiv.style.height = `${sizeBox}px`;
+            squareDiv.style.width = `${sizeBox}px`;
             squareDiv.style.gridColumn = `${i} / ${i+1}`;
             container.appendChild(squareDiv);
         }
@@ -70,8 +74,10 @@ function constructPanel(sizeGrid) {
 
 }
 
-constructPanel(30);
+// create a default panel
+constructPanel(50);
 
+// event listener to create a new panel (erase the actual one + create a new one with desired size)
 document.getElementById("drawButton").addEventListener('click', () => {
     while (container.hasChildNodes()) {  
 
@@ -81,10 +87,13 @@ document.getElementById("drawButton").addEventListener('click', () => {
 
     let sizeGrid = 200;
 
-    while(sizeGrid>100){
-        sizeGrid = parseInt(prompt('Please enter the size of the grid you want to draw on (limited to 100px) : '));
+    while(sizeGrid>100 || sizeGrid<=0){
+        sizeGrid = parseInt(prompt('Please enter the size of the grid you want to draw on (limited to 100) : '));
     }
-    
+
     constructPanel(sizeGrid);
+    
+    
+    
 
 });
