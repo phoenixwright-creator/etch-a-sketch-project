@@ -15,6 +15,7 @@ document.body.style.padding = "0px";
 title.style.textAlign = "center";
 description.style.textAlign = "center";
 description.style.padding = "30px";
+description.style.paddingTop = "10px";
 description.style.borderBottom = "1px solid black";
 
 // style and center the container of the draw panel
@@ -23,7 +24,7 @@ container.style.width = "500px";
 container.style.display = "grid";
 container.style.marginLeft = "auto";
 container.style.marginRight = "auto";
-container.style.marginTop = "30px";
+container.style.marginTop = "20px";
 container.style.marginBottom = "30px";
 container.style.border = "15px double black";
 
