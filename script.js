@@ -43,6 +43,11 @@ button.style.height = "50px";
 button.style.width = "200px";
 
 // function to create the draw panel
+
+function draw() {
+    
+}
+
 function constructPanel(sizeGrid) {
 
     let sizeBox = 500/sizeGrid;
@@ -63,16 +68,15 @@ function constructPanel(sizeGrid) {
 
     const boxes = document.querySelectorAll('.box16');
 
-    for(let k = 0; k<boxes.length; k++) {
 
-        boxes[k].addEventListener('mouseover', () => {
 
-            boxes[k].style.backgroundColor = "red";
-
-        });
-
-    }
-
+    container.addEventListener('click', () => {
+        for(let k = 0; k<boxes.length; k++) {
+            boxes[k].addEventListener('mouseover', () => {
+                boxes[k].style.backgroundColor = "red";
+            });
+        }
+    });
 }
 
 // create a default panel
